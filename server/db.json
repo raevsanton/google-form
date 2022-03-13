@@ -1,0 +1,67 @@
+{
+  "questionnaires": [
+    {
+      "id": 1,
+      "questions": [
+        {
+          "id": 20,
+          "required": true,
+          "title": "What language is your favourite?",
+          "type": "single",
+          "answers": [
+            {
+              "id": 1,
+              "text": "JavaScript",
+              "self_answer": false
+            },
+            {
+              "id": 2,
+              "text": "TypeScript",
+              "self_answer": false
+            },
+            {
+              "id": 3,
+              "text": "CoffeeScript",
+              "self_answer": false
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "required": false,
+          "title": "What do you like about programming?",
+          "type": "text",
+          "answers": []
+        },
+        {
+          "id": 22,
+          "required": true,
+          "title": "How was the assignment?",
+          "type": "single",
+          "answers": [
+            {
+              "id": 4,
+              "text": "Easy",
+              "self_answer": false
+            },
+            {
+              "id": 5,
+              "text": "Normal",
+              "self_answer": false
+            },
+            {
+              "id": 6,
+              "text": "Hard",
+              "self_answer": false
+            },
+            {
+              "id": 7,
+              "text": "Other:",
+              "self_answer": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
