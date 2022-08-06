@@ -2,6 +2,9 @@
   "questionnaires": [
     {
       "id": 1,
+      "title": "Google form",
+      "description": "Show me what you got!",
+      "additional_text": "* Required",
       "questions": [
         {
           "id": 20,

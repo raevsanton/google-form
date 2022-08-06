@@ -12,6 +12,7 @@ interface Props {
 
 /**
  * Question component
+ * @param {Props} props - Received props
  * @returns {React.ReactElement} - React element
  */
 export const Question = ({

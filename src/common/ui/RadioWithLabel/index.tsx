@@ -1,18 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Radio, FormControlLabel, FormControl } from '@material-ui/core';
-import { RadioControlWrapper, LabelWrapper, Label } from './style';
+import {
+  RadioControlWrapper, LabelWrapper, Label, useStyles,
+} from './style';
 import { TextInput } from '../TextInput';
-
-const useStyles = makeStyles({
-  root: {
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
-    padding: 0,
-    marginRight: 10,
-  },
-});
 
 interface Props {
   label: string;

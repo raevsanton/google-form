@@ -1,5 +1,16 @@
 import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 import { colors } from '../../constants/colors';
+
+export const useStyles = makeStyles({
+  root: {
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+    padding: 0,
+    marginRight: 10,
+  },
+});
 
 export const RadioControlWrapper = styled.div`
   .MuiFormControlLabel-root {

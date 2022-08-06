@@ -4,7 +4,7 @@ import { Question } from './components/Question';
 import { Description } from './components/Description';
 import { Button } from './common/ui/Button';
 import { Loader } from './common/ui/Loader';
-import { IQuestion } from './components/Question/types';
+import { IQuestion, Poll } from './components/Question/types';
 
 interface Answer {
   id: number;
@@ -12,18 +12,17 @@ interface Answer {
 }
 
 export const App = (): React.ReactElement => {
-  const [questionsData, setQuestionsData] = React.useState<Array<IQuestion>>([]);
-  const [answersData, setAnswersData] = React.useState<Answer>(null);
+  const [pollData, setPollData] = React.useState<Poll>(null);
+  const [answersData, setAnswersData] = React.useState<Answer[]>([]);
 
-  const [loading, setLoading] = React.useState<boolean>(false);
+  const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<boolean>(false);
 
   React.useEffect((): void => {
     (async () => {
-      setLoading(true);
       try {
-        const { data: { questions } }: AxiosResponse = await axios.get('http://localhost:3001/questionnaires/1/');
-        setQuestionsData(questions);
+        const { data }: AxiosResponse = await axios.get('http://localhost:3001/questionnaires/1/');
+        setPollData(data);
         setLoading(false);
       } catch {
         setLoading(false);
@@ -34,21 +33,20 @@ export const App = (): React.ReactElement => {
 
   /**
    * Submit data of answers
-   * @param {React.FormEvent<HTMLFormElement>} event - Submit event
    */
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
+  const onSubmit = (): void => {
+    alert(JSON.stringify(answersData));
   };
 
   /**
    * Add values for body
-   * @param {number} id - id of question
+   * @param {number} id - question id
    * @param {string} answerText - text of answer
    */
   const addAnswersData = React.useCallback((id: number, answerText: string) => {
     const copyAnswers = { ...answersData };
     copyAnswers[id] = { id, answer: answerText };
-    setAnswersData((prevState: Answer) => ({ ...prevState, ...copyAnswers }));
+    setAnswersData((prevState) => ({ ...prevState, ...copyAnswers }));
   }, [setAnswersData]);
 
   /**
@@ -70,10 +68,14 @@ export const App = (): React.ReactElement => {
   return (
     <>
       <header>
-        <Description />
+        <Description
+          title={pollData.title}
+          description={pollData.description}
+          additionalText={pollData.additional_text}
+        />
       </header>
       <form onSubmit={onSubmit}>
-        {questionsData.map((question: IQuestion) => (
+        {pollData.questions.map((question: IQuestion) => (
           <Question
             key={question.id}
             question={question}

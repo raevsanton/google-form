@@ -12,7 +12,11 @@ interface Props {
  * @param {Props} props - Received props
  * @returns {React.ReactElement} - React element
  */
-export const Button = ({ children, onClick, ...rest }: Props) => (
+export const Button = ({
+  children,
+  onClick,
+  ...rest
+}: Props) => (
   <ButtonWrapper
     onClick={onClick}
     {...rest}
